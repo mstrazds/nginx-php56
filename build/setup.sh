@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Run Node.js output versions
-node -v
-npm -v
-
 ##-------------------------------------------------------
 # UPDATE CONFIG FILES
 ##-------------------------------------------------------
@@ -21,9 +17,6 @@ sed -i '/^;listen.mode = .*/alisten.mode = 0660' /etc/php5/fpm/pool.d/www.conf
 sed -i '/^listen.mode = .*/alisten.owner = www-data' /etc/php5/fpm/pool.d/www.conf
 sed -i '/^listen.mode = .*/alisten.group = www-data' /etc/php5/fpm/pool.d/www.conf
 
-# Dynamic PHP environment variables for php-fpm
-#&#&
-
 ##-------------------------------------------------------
 # UPDATE FILES AND FOLDERS
 ##-------------------------------------------------------
@@ -31,6 +24,3 @@ sed -i '/^listen.mode = .*/alisten.group = www-data' /etc/php5/fpm/pool.d/www.co
 # Add required php5-fpm folders
 mkdir -p /var/run/php5-fpm && chown -R www-data:www-data /var/run/php5-fpm
 mkdir -p /var/log/php5-fpm && chown -R www-data:www-data /var/log/php5-fpm
-
-# Remove existing www folder
-# rm -fr /var/www
