@@ -5,7 +5,7 @@
 </p>
 -----
 # nginx-php56
-A Nginx + PHP 5.6 (FPM) Base container. This container is based on the excellent [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) base container. You can find the Docker Repository [here](https://registry.hub.docker.com/u/mstrazds/nginx-php56/).
+A Nginx + PHP 5.6 (FPM) Base container. This container is based on the excellent [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) base container. You can find the Docker Automated Build [here](https://registry.hub.docker.com/u/mstrazds/nginx-php56/).
 
 ### Services
 All services are defined and managed using the phusion/baseimage methodology. Logs are output using syslog and can be accessed using ``docker logs {container}``.
