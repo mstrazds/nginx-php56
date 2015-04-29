@@ -1,10 +1,7 @@
 FROM phusion/baseimage:0.9.16
 
-# Forked from: https://github.com/fideloper/docker-nginx-php
-# Other components and inspiration from: https://github.com/dmyers/docker-laravel
-
+# Phusion setup
 ENV HOME /root
-
 RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 CMD ["/sbin/my_init"]
@@ -17,7 +14,7 @@ RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5
 					php5-gd php5-mcrypt php5-intl php5-imap php5-tidy php-pear php5-xmlrpc \
 					nodejs
 
-# Install nginx
+# Install nginx (full)
 RUN apt-get install -y nginx-full
 
 # Add build script
@@ -43,8 +40,7 @@ ADD build/index.php /var/www/public/index.php
 RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www
 
-#RUN chown www-data:www-data -R /var/www/app/storage
-
+# Port and Volume settings
 EXPOSE 80
 VOLUME /var/www
 
