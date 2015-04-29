@@ -31,4 +31,4 @@ Note that the ``/var/www/public`` is the root folder for serving PHP files for y
 Contains nginx config files as well as php-fpm settings. Also include setup.sh file that offloads tasks from the Dockerfile to reduce layers.
 
 ### Notes
-Remember that PHP-FPM doesn not respect environment variables passed in the traditional manner. You will need to explicitly state what your variables are within the ``/etc/php5/fpm/pool.d/www.conf`` file.
+Note that PHP-FPM does not respect environment variables passed in the traditional manner. You will need to explicitly state what your variables are within the ``/etc/php5/fpm/pool.d/www.conf`` file.
