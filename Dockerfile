@@ -18,7 +18,7 @@ RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5
 					nodejs
 
 # Install nginx
-RUN apt-get install -y nginx
+RUN apt-get install -y nginx-full
 
 # Add build script
 RUN mkdir -p /root/setup
@@ -28,6 +28,7 @@ RUN (cd /root/setup/; /root/setup/setup.sh)
 
 # Copy files from repo
 ADD build/default   /etc/nginx/sites-available/default
+ADD build/nginx.conf /etc/nginx/nginx.conf
 
 # Add all required files and folders, update permissions
 ADD build/nginx.sh /etc/service/nginx/run
@@ -36,9 +37,13 @@ RUN chmod +x /etc/service/nginx/run
 ADD build/phpfpm.sh /etc/service/phpfpm/run
 RUN chmod +x /etc/service/phpfpm/run
 
+RUN mkdir -p /var/www/public
+ADD build/index.php /var/www/public/index.php
+
 RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www
-RUN chown www-data:www-data -R /var/www/app/storage
+
+#RUN chown www-data:www-data -R /var/www/app/storage
 
 EXPOSE 80
 VOLUME /var/www
