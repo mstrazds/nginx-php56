@@ -18,7 +18,7 @@ RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5
 RUN apt-get install -y nginx-full
 
 # Install ntpd
-RUN apt-get install -y nginx-full
+RUN apt-get install -y ntp
 
 # Add build script
 RUN mkdir -p /root/setup
