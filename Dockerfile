@@ -7,7 +7,7 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 CMD ["/sbin/my_init"]
 
 # Nginx-PHP Installation
-RUN apt-get update -y && apt-get install -y vim curl wget build-essential python-software-properties git-core ntp
+RUN apt-get update -y && apt-get install -y vim curl wget build-essential python-software-properties git-core
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
 RUN add-apt-repository -y ppa:ondrej/php5-5.6 && add-apt-repository -y ppa:nginx/stable && add-apt-repository ppa:chris-lea/node.js
 RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5-cli php5-fpm php5-mysql php5-curl \
@@ -15,6 +15,9 @@ RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5
 					nodejs
 
 # Install nginx (full)
+RUN apt-get install -y nginx-full
+
+# Install ntpd
 RUN apt-get install -y nginx-full
 
 # Add build script
