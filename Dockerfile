@@ -48,9 +48,8 @@ ADD build/index.php /var/www/public/index.php
 RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www
 
-# Port and Volume settings
+# Port and settings
 EXPOSE 80
-VOLUME /var/www
 
 # Cleanup apt and lists
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
