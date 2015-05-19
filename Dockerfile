@@ -29,6 +29,8 @@ RUN (cd /root/setup/; /root/setup/setup.sh)
 # Copy files from repo
 ADD build/default /etc/nginx/sites-available/default
 ADD build/nginx.conf /etc/nginx/nginx.conf
+ADD build/php-fpm.conf /etc/php5/fpm/php-fpm.conf
+ADD build/www.conf /etc/php5/fpm/pool.d/www.conf
 
 # Add startup scripts for services
 ADD build/nginx.sh /etc/service/nginx/run
