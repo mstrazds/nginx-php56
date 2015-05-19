@@ -21,15 +21,15 @@ The container sets up a www root folder in the following location:
 
 As a final task a demo index.php is copied to this location.
 
-### Volumes
-The following folder is specified as a volume:
+### Web Root
+The following folder is specified as the default root web folder:
 
-``/var/www/``
+``/var/www/public``
 
-Note that the ``/var/www/public`` is the root folder for serving PHP files for your web server. Having a layer (folder) back for the volume allows a bit more flexibility on file visibility.
+Note that the ``/var/www/public`` is the root folder for serving PHP files for your web server.
 
 ### Build Folder (within repo)
 Contains nginx config files as well as php-fpm settings. Also include setup.sh file that offloads tasks from the Dockerfile to reduce layers.
 
 ### Notes
-Note that PHP-FPM does not respect environment variables passed in the traditional manner. You will need to explicitly state what your variables are within the ``/etc/php5/fpm/pool.d/www.conf`` file.
+Note that PHP-FPM has been configured to pass through environment variables when starting the container using the ``clear_env = no`` flag within the ``/etc/php5/fpm/pool.d/www.conf`` file.
