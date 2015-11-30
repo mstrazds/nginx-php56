@@ -31,5 +31,8 @@ Note that the ``/var/www/public`` is the root folder for serving PHP files for y
 ### Build Folder (within repo)
 Contains nginx config files as well as php-fpm settings. Also include setup.sh file that offloads tasks from the Dockerfile to reduce layers.
 
+### Databases
+This image supports mysql and postgres.
+
 ### Notes
 Note that PHP-FPM has been configured to pass through environment variables when starting the container using the ``clear_env = no`` flag within the ``/etc/php5/fpm/pool.d/www.conf`` file.
