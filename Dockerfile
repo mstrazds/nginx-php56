@@ -10,8 +10,9 @@ CMD ["/sbin/my_init"]
 RUN apt-get update -y && apt-get install -y vim curl wget build-essential python-software-properties git-core
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
 RUN add-apt-repository -y ppa:ondrej/php5-5.6 && add-apt-repository -y ppa:nginx/stable
-RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5-cli php5-fpm php5-mysqlnd php5-curl \
-					php5-gd php5-mcrypt php5-intl php5-imap php5-tidy php-pear php5-xmlrpc
+RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -y php5 php5-cli php5-fpm php5-mysqlnd \
+					php5-pgsql php5-curl php5-gd php5-mcrypt php5-intl php5-imap php5-tidy \
+					php-pear php5-xmlrpc
 
 # Install latest version of nodejs
 RUN curl --silent --location https://deb.nodesource.com/setup_4.x | sudo bash -
@@ -34,6 +35,7 @@ ADD build/default /etc/nginx/sites-available/default
 ADD build/nginx.conf /etc/nginx/nginx.conf
 ADD build/php-fpm.conf /etc/php5/fpm/php-fpm.conf
 ADD build/www.conf /etc/php5/fpm/pool.d/www.conf
+ADD build/.bashrc /root/.bashrc
 
 # Add startup scripts for services
 ADD build/nginx.sh /etc/service/nginx/run
@@ -52,6 +54,9 @@ ADD build/index.php /var/www/public/index.php
 
 RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www
+
+# Set terminal environment
+ENV TERM=xterm
 
 # Port and settings
 EXPOSE 80

@@ -1,3 +1,8 @@
+## 0.9.2 (release date: 2015-11-30)
+
+ * Added PostgreSQL Support
+ * Added XTERM environment support w/colors
+
 ## 0.9.1 (release date: 2015-10-07)
 
  * Removed stale NTP entries
