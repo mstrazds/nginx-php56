@@ -40,7 +40,7 @@ The image generates a self-signed certificate for each container within the fold
 During build the ``build/default`` file is used to copy and configure nginx default settings. This includes a cipher suite for legacy browser (IE8+) support. See: [https://cipherli.st/](https://cipherli.st/)
 
 ### Node + NVM
-The image contains installation and configuration of node ``0.10.37`` by default using NVM [(Node Version Manager)](https://github.com/creationix/nvm). This can be changed by running: ``nvm install $NODE_VERSION`` and using the new node version by running the following command: ``nvm use $NODE_VERSION``
+The image contains installation and configuration of node ``0.12.10`` by default using NVM [(Node Version Manager)](https://github.com/creationix/nvm). This can be changed by running: ``nvm install $NODE_VERSION`` and using the new node version by running the following command: ``nvm use $NODE_VERSION``
 
 ### New Relic APM
 Installs New Relic APM daemon on [container startup](https://github.com/phusion/baseimage-docker#running_startup_scripts) to monitor the php application within the image. See [this tutorial](http://code.tutsplus.com/tutorials/how-to-monitor-docker-based-applications-using-new-relic--cms-24891) for more information.
