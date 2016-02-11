@@ -1,3 +1,7 @@
+## 0.9.5 (release date: 2016-01-11)
+
+ * Updated NVM to switch to node `0.12.10`
+
 ## 0.9.4 (release date: 2016-01-11)
 
  * Bugfix for removing multiple newrelic instances
