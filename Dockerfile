@@ -22,7 +22,7 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install Node Version Manager and install node specific version
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 0.10.37
+ENV NODE_VERSION 0.12.10
 
 # Install nvm with node and npm
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash \
