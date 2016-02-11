@@ -13,6 +13,7 @@ All services are defined and managed using the phusion/baseimage methodology. Lo
 * Nginx
 * PHP-FPM (5.6)
 * NTPD
+* New Relic APM
 
 ### Default Settings
 The container sets up a www root folder in the following location:

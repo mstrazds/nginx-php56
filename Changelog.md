@@ -1,3 +1,8 @@
+## 0.9.4 (release date: 2016-01-11)
+
+ * Bugfix for removing multiple newrelic instances
+ * Bugfix for newrelic install fails gracefully
+
 ## 0.9.3 (release date: 2016-01-10)
 
  * Removed latest version of nodejs installation
