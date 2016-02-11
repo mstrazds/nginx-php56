@@ -1,3 +1,7 @@
+## 0.9.6 (release date: 2016-01-11)
+
+ * Bugfix moved layers around for node `0.12.10`
+
 ## 0.9.5 (release date: 2016-01-11)
 
  * Updated NVM to switch to node `0.12.10`
