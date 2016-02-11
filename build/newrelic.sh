@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Fail on error
-#set -e
+##--------------------------------------------------------
+# CHECK IF NV_INSTALL_KEY IS NOT DEFAULT TO INSTALL NR APM
+##--------------------------------------------------------
 
 if [ "$NR_INSTALL_KEY" = "**ChangeMe**" ]; then
     echo "Skipping New Relic Setup..."
