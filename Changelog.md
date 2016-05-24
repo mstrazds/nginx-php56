@@ -1,3 +1,11 @@
+## 0.10.0 (release date: 2016-05-24)
+
+ * Bumped to workaround docker hub issue
+
+## 0.9.7.1 (release date: 2016-02-11)
+
+ * Updated Newrelic Script
+
 ## 0.9.6 (release date: 2016-01-11)
 
  * Bugfix moved layers around for node `0.12.10`
