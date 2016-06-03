@@ -1,3 +1,7 @@
+## 0.11.0 (release date: 2016-06-03)
+
+ * Replaced apt-get package source to ppa:ondrej/php
+
 ## 0.10.0 (release date: 2016-05-24)
 
  * Bumped to workaround docker hub issue
