@@ -1,3 +1,7 @@
+## 0.12.0 (release date: 2016-06-06)
+
+ * Reverted back to ppa:ondrej/php5-5.6 as NR doesn't support 7.0
+
 ## 0.11.0 (release date: 2016-06-03)
 
  * Replaced apt-get package source to ppa:ondrej/php
