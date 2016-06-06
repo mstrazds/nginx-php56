@@ -11,7 +11,7 @@ RUN apt-get update -y && apt-get install -y vim curl wget build-essential python
 RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add - && \
 echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
-RUN add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:nginx/stable
+RUN add-apt-repository -y ppa:ondrej/php5-5.6 && add-apt-repository -y ppa:nginx/stable
 RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -yq php5 php5-cli php5-fpm php5-mysqlnd \
 					php5-pgsql php5-curl php5-gd php5-mcrypt php5-intl php5-imap php5-tidy \
 					php-pear php5-xmlrpc newrelic-php5
