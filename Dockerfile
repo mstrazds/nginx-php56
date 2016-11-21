@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:0.9.19
 
 # Phusion setup
 ENV HOME /root
@@ -6,24 +6,23 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 CMD ["/sbin/my_init"]
 
+# Set terminal to non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Nginx-PHP Installation
-RUN apt-get update -y && apt-get install -y vim curl wget build-essential python-software-properties git-core
+RUN apt-get update -y && apt-get install -y wget build-essential python-software-properties git-core
 RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add - && \
 echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
-RUN add-apt-repository -y ppa:ondrej/php5-5.6 && add-apt-repository -y ppa:nginx/stable
-RUN apt-get update -y && sudo apt-get upgrade -y && apt-get install -yq php5 php5-cli php5-fpm php5-mysqlnd \
-					php5-pgsql php5-curl php5-gd php5-mcrypt php5-intl php5-imap php5-tidy \
-					php-pear php5-xmlrpc newrelic-php5
+RUN add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:nginx/stable
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -q -y php5.6 php5.6-dev php5.6-fpm php5.6-mysqlnd \
+					php5.6-pgsql php5.6-curl php5.6-gd php5.6-mbstring php5.6-mcrypt php5.6-intl php5.6-imap php5.6-tidy \
+					php5.6-xml php5.6-xmlrpc newrelic-php5 php-pear nginx-full ntp
+
+                    # php5.6-imagick ffmpeg imagemagick
 
 # Run update timezone replace city with relevant city. eg. "Australia/Sydney"
 RUN cp -p /usr/share/zoneinfo/Australia/Sydney /etc/localtime
-
-# Install nginx (full)
-RUN apt-get install -y nginx-full
-
-# Install ntpd
-RUN apt-get install -y ntp
 
 # Add build script
 RUN mkdir -p /root/setup
@@ -34,8 +33,8 @@ RUN (cd /root/setup/; /root/setup/setup.sh)
 # Copy files from repo
 ADD build/default /etc/nginx/sites-available/default
 ADD build/nginx.conf /etc/nginx/nginx.conf
-ADD build/php-fpm.conf /etc/php5/fpm/php-fpm.conf
-ADD build/www.conf /etc/php5/fpm/pool.d/www.conf
+ADD build/php-fpm.conf /etc/php/5.6/fpm/php-fpm.conf
+ADD build/www.conf /etc/php/5.6/fpm/pool.d/www.conf
 ADD build/.bashrc /root/.bashrc
 
 # Add startup scripts for services

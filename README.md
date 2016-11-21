@@ -4,7 +4,7 @@
   </a>
 </p>
 -----
-# nginx-php56 [![](https://badge.imagelayers.io/mstrazds/nginx-php56:latest.svg)](https://imagelayers.io/?images=mstrazds/nginx-php56:latest 'Get your own badge on imagelayers.io')
+# nginx-php56
 A Nginx + PHP 5.6 (FPM) base container. Builds upon on the excellent [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) container. You can find the docker automated build [here](https://registry.hub.docker.com/u/mstrazds/nginx-php56/).
 
 ### Services
