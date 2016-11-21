@@ -1,3 +1,11 @@
+## 1.0.3 (release date: 2016-11-22)
+
+ * Updated newrelic script path
+
+## 1.0.2 (release date: 2016-11-21)
+
+ * Removed php-pear module due to PHP7.0 incompatibility
+
 ## 1.0.1 (release date: 2016-11-21)
 
  * Added changelog
