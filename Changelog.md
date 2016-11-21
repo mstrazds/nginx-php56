@@ -1,3 +1,14 @@
+## 1.0.1 (release date: 2016-11-21)
+
+ * Added changelog
+
+## 1.0.0 (release date: 2016-11-21)
+
+ * Updated `phusion/baseimage` to `0.9.19`
+ * Replaced apt-get package source to ppa:ondrej/php
+ * Updated all packages to adhere to ppa:ondrej/php
+ * Modified settings file to comply with 5-5.6 naming conventions
+
 ## 0.12.0 (release date: 2016-06-06)
 
  * Reverted back to ppa:ondrej/php5-5.6 as NR doesn't support 7.0
