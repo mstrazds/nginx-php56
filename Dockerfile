@@ -12,7 +12,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Nginx-PHP Installation
 RUN apt-get update -y && apt-get install -y wget build-essential python-software-properties git-core
 RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add - && \
-echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
+					echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
 RUN add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:nginx/stable
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -q -y php5.6 php5.6-dev php5.6-fpm php5.6-mysqlnd \
@@ -23,6 +23,9 @@ RUN apt-get update -y && apt-get upgrade -y && apt-get install -q -y php5.6 php5
 
 # Run update timezone replace city with relevant city. eg. "Australia/Sydney"
 RUN cp -p /usr/share/zoneinfo/Australia/Sydney /etc/localtime
+
+# Update PECL channel listing
+RUN pecl channel-update pecl.php.net
 
 # Add build script
 RUN mkdir -p /root/setup
@@ -50,7 +53,7 @@ RUN chmod +x /etc/service/ntp/run
 
 # Set WWW public folder
 RUN mkdir -p /var/www/public
-ADD build/index.php /var/www/public/index.php
+ADD www/index.php /var/www/public/index.php
 
 RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www
@@ -70,10 +73,11 @@ RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 # Install Node Version Manager and install node specific version
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION 0.12.10
+ENV NVM_VERSION 0.33.0
+ENV NODE_VERSION 6.9.4
 
 # Install nvm with node and npm
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash \
+RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
     && source $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \

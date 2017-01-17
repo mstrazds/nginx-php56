@@ -1,3 +1,13 @@
+## 1.1.0 (release date: 2017-01-17)
+
+ * Updated nginx conf sendfile default to 'off'
+ * Updated NVM version to 0.33.0
+ * Updated Node.js to version 6.9.4 LTS
+ * Added synchronise on start to the ntp daemon
+ * Added 'www' folder and moved index.php
+ * Added docker-compose.yml for easy setup
+ * Update PECL channel listing
+
 ## 1.0.3 (release date: 2016-11-22)
 
  * Updated newrelic script path
