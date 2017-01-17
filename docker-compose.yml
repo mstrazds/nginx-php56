@@ -1,0 +1,16 @@
+# Nginx Baseimage
+
+nginxphp:
+  container_name: nginxphp
+  build: .
+  dockerfile: Dockerfile
+  privileged: true
+  ports:
+    - "80:80"
+    - "443:443"
+    - "2222:22"
+  environment:
+    # Set xterm for terminal for 'docker exec' command colors
+    - TERM=xterm
+  volumes:
+    - ./www:/var/www/public
