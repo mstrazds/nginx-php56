@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="http://docker.io">
-    <img height="81" width="341" src="http://upload.wikimedia.org/wikipedia/commons/7/79/Docker_(container_engine)_logo.png">
-  </a>
-</p>
------
 # nginx-php56
 A Nginx + PHP 5.6 (FPM) base container. Builds upon on the excellent [phusion/baseimage-docker](https://github.com/phusion/baseimage-docker) container. You can find the docker automated build [here](https://registry.hub.docker.com/u/mstrazds/nginx-php56/).
 
