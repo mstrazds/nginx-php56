@@ -10,7 +10,7 @@ CMD ["/sbin/my_init"]
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Nginx-PHP Installation
-RUN apt-get update -y && apt-get install -y wget build-essential python-software-properties git-core
+RUN apt-get update -y && apt-get install -y wget build-essential python-software-properties git-core vim nano
 RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add - && \
 					echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
