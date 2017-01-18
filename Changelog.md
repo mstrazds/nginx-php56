@@ -1,3 +1,7 @@
+## 1.1.2 (release date: 2017-01-18)
+
+ * Added `vim` and `nano` to install
+
 ## 1.1.1 (release date: 2017-01-17)
 
  * Patched ntpd so that invalid `-s` switch is removed
