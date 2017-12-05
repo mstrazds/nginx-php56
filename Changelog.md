@@ -1,3 +1,11 @@
+## 1.1.3 (release date: 2017-12-05)
+
+ * Removed NVM installer
+ * Removed NVM ENV settings
+ * Removed Node.js from build
+ * Updated `phusion/baseimage` to `0.9.22`
+ * Updated localtime to symlink with UTC
+
 ## 1.1.2 (release date: 2017-01-18)
 
  * Added `vim` and `nano` to install
