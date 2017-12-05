@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.19
+FROM phusion/baseimage:0.9.22
 
 # Phusion setup
 ENV HOME /root
@@ -12,17 +12,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Nginx-PHP Installation
 RUN apt-get update -y && apt-get install -y wget build-essential python-software-properties git-core vim nano
 RUN wget -O - https://download.newrelic.com/548C16BF.gpg | apt-key add - && \
-					echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
+	echo "deb http://apt.newrelic.com/debian/ newrelic non-free" > /etc/apt/sources.list.d/newrelic.list
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
 RUN add-apt-repository -y ppa:ondrej/php && add-apt-repository -y ppa:nginx/stable
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -q -y php5.6 php5.6-dev php5.6-fpm php5.6-mysqlnd \
-					php5.6-pgsql php5.6-curl php5.6-gd php5.6-mbstring php5.6-mcrypt php5.6-intl php5.6-imap php5.6-tidy \
-					php5.6-xml php5.6-xmlrpc newrelic-php5 nginx-full ntp
+	php5.6-pgsql php5.6-curl php5.6-gd php5.6-mbstring php5.6-mcrypt php5.6-intl php5.6-imap php5.6-tidy \
+	php5.6-xml php5.6-xmlrpc newrelic-php5 nginx-full ntp
 
-                    # php5.6-imagick ffmpeg imagemagick php-pear
-
-# Run update timezone replace city with relevant city. eg. "Australia/Sydney"
-RUN cp -p /usr/share/zoneinfo/Australia/Sydney /etc/localtime
+# Create new symlink to UTC timezone for localtime
+RUN unlink /etc/localtime
+RUN ln -s /usr/share/zoneinfo/UTC /etc/localtime
 
 # Update PECL channel listing
 RUN pecl channel-update pecl.php.net
@@ -67,24 +66,6 @@ RUN chmod +x /etc/my_init.d/newrelic.sh
 ENV NR_INSTALL_SILENT 1
 ENV NR_INSTALL_KEY **ChangeMe**
 ENV NR_APP_NAME "Docker PHP Application"
-
-# Replace shell with bash so we can source files
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
-# Install Node Version Manager and install node specific version
-ENV NVM_DIR /usr/local/nvm
-ENV NVM_VERSION 0.33.0
-ENV NODE_VERSION 6.9.4
-
-# Install nvm with node and npm
-RUN curl https://raw.githubusercontent.com/creationix/nvm/v$NVM_VERSION/install.sh | bash \
-    && source $NVM_DIR/nvm.sh \
-    && nvm install $NODE_VERSION \
-    && nvm alias default $NODE_VERSION \
-    && nvm use default
-
-ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # Set terminal environment
 ENV TERM=xterm
