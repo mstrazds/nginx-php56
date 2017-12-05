@@ -1,3 +1,7 @@
+## 1.1.4 (release date: 2017-12-05)
+
+ * Added zip unzip php5.6-zip to installer
+
 ## 1.1.3 (release date: 2017-12-05)
 
  * Removed NVM installer
